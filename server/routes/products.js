@@ -5,11 +5,21 @@ const Product = require('../models/product');
 const router = express.Router();
 
 router.get('/', (req, res) => {
-  Product.getAll((err, result, fiels) => {
+  Product.getAllWithCategory((err, result, fiels) => {
     if (err) {
       res.status(404).send(err);
     }
-    res.send('All products' + JSON.stringify(result));
+    res.send(JSON.stringify(result));
+  });
+});
+
+router.get('/categories/:ids', (req, res) => {
+  Product.getAllFromCategory(req.params.ids, (err, result, fiels) => {
+    if (err) {
+      res.status(404).send(err);
+    }
+    console.log(result.length);
+    res.send(JSON.stringify(result));
   });
 });
 
@@ -18,7 +28,7 @@ router.get('/:id', (req, res) => {
     if (err) {
       res.status(404).send(err);
     }
-    res.send('Product: ' + JSON.stringify(result));
+    res.send(JSON.stringify(result));
   });
 });
 

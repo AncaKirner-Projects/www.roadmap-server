@@ -8,7 +8,7 @@ router.get('/', (req, res) => {
     if (err) {
       res.status(404).send(err);
     }
-    res.send('All categories' + JSON.stringify(result));
+    res.send(JSON.stringify(result));
   });
 });
 

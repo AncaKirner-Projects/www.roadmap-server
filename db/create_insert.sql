@@ -3,6 +3,7 @@ CREATE TABLE roadmap.product
  (
 id INT(6) AUTO_INCREMENT PRIMARY KEY,
 prod_name VARCHAR(100) NOT NULL,
+prod_description VARCHAR(10000),
 price DECIMAL(10,2) NOT NULL,
 prod_number INT,
 reg_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP
@@ -99,7 +100,11 @@ INSERT INTO roadmap.product_category(category_id, product_id) VALUES(4, 18);
 INSERT INTO roadmap.product_category(category_id, product_id) VALUES(4, 19);
 INSERT INTO roadmap.product_category(category_id, product_id) VALUES(4, 20);
 
+INSERT INTO roadmap.product_category(category_id, product_id) VALUES(2, 1);
+INSERT INTO roadmap.product_category(category_id, product_id) VALUES(2, 2);
 
+INSERT INTO roadmap.product_category(category_id, product_id) VALUES(3, 1);
+INSERT INTO roadmap.product_category(category_id, product_id) VALUES(3, 2);
 
 select * from roadmap.product;
 select * from roadmap.category;
