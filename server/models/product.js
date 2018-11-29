@@ -11,6 +11,7 @@ const ProductObj = {
     product.find('all', callback);
   },
   getAllWithCategory: (callback) => {
+    console.log('IN MODEL%%%%%');
     const query = "\
     SELECT p.*, pc.category_id \
     FROM product p \
@@ -31,7 +32,6 @@ const ProductObj = {
   },
   add: (prod, callback) => {
     product = new Product(prod);
-    console.log(product);
     product.save(callback);
   },
   delete: (id, callback) => {

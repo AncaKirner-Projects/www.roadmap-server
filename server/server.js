@@ -15,24 +15,9 @@ app.use(cors());
 app.use('/products', products);
 app.use('/categories', categories);
 
-// app.use((req, resp, next) => {
-//   var err = new Error('Not found!');
-//   err.status = 404;
-//   next(err);
-// })
-// app.get('/', (req, res) => {
-//   res.send('Hello World');
-// });
-
-// app.get('/users', (req, res) => {
-//   res.send('User list');
-// });
-
-// app.use(function (req, res, next) {
-//   res.status(404).send("Sorry can't find that!")
-// });
-
-app.listen(8000, () => {
-  console.log("Listening...");
+const server = app.listen(8000, () => {
+  console.log("Listening:8000...");
 });
 
+
+module.exports = server;
