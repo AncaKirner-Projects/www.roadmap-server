@@ -20,9 +20,9 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">56.25% </span>
+        <span class="strong">100% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>9/16</span>
+        <span class='fraction'>1/1</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
@@ -35,13 +35,13 @@
         <span class='fraction'>0/0</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">56.25% </span>
+        <span class="strong">100% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>9/16</span>
+        <span class='fraction'>1/1</span>
       </div>
     </div>
   </div>
-  <div class='status-line medium'></div>
+  <div class='status-line high'></div>
 <pre><table class="coverage">
 <tr><td class="line-count quiet">1
 2
@@ -71,63 +71,63 @@
 26
 27</td><td class="line-coverage quiet"><span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">const Request = require('request');
 &nbsp;
-xdescribe('Server', () =&gt; {
-  let server;
-  beforeAll(() =&gt; {
-<span class="cstat-no" title="statement not covered" >    server = require('../../server/server');</span>
-  });
+// xdescribe('Server', () =&gt; {
+//   let server;
+//   beforeAll(() =&gt; {
+//     server = require('../../server/server');
+//   });
 &nbsp;
-  afterAll(() =&gt; {
-<span class="cstat-no" title="statement not covered" >    server.close();</span>
-  });
+//   afterAll(() =&gt; {
+//     server.close();
+//   });
 &nbsp;
-  describe('GET /products/', () =&gt; {
-    const data = {};
-    beforeAll((done) =&gt; {
-<span class="cstat-no" title="statement not covered" >      Request.get('http://localhost:8000/products', (err, resp, body) =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >        data.status = resp.statusCode;</span>
-<span class="cstat-no" title="statement not covered" >        data.body = JSON.parse(body);</span>
-<span class="cstat-no" title="statement not covered" >        done();</span>
-      })
-    });
+//   describe('GET /products/', () =&gt; {
+//     const data = {};
+//     beforeAll((done) =&gt; {
+//       Request.get('http://localhost:8000/products', (err, resp, body) =&gt; {
+//         data.status = resp.statusCode;
+//         data.body = JSON.parse(body);
+//         done();
+//       })
+//     });
 &nbsp;
-    it('Status 200', () =&gt; {
-<span class="cstat-no" title="statement not covered" >      expect(data.status).toBe(200);</span>
-    });
-  });
-})</pre></td></tr>
+//     it('Status 200', () =&gt; {
+//       expect(data.status).toBe(200);
+//     });
+//   });
+// })</pre></td></tr>
 </table></pre>
 <div class='push'></div><!-- for sticky footer -->
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Tue Nov 27 2018 15:04:02 GMT+0200 (GTB Standard Time)
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Wed Dec 05 2018 17:33:35 GMT+0200 (GTB Standard Time)
 </div>
 </div>
 <script src="../../prettify.js"></script>

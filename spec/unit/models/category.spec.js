@@ -1,29 +1,55 @@
-const CategoryObj = require('../../../server/models/category');
+describe('CategoryObj', () => {
+  const category = {
+    find: function () { },
+    save: function () { },
+    set: function () { },
+    remove: function () { }
+  };
+  const CategoryObj = require('../../../server/models/category');
 
-xdescribe('CategoryObj', () => {
-  it('getAll categories', () => {
+  it('getAll()', () => {
+    spyOn(category, 'find');
+    const callback = function () { };
 
-
-    // const category = {};
-    const callback = jasmine.createSpy('callback');
-    // spyOn(category, "find").and.callFake(function (arguments, can, be, received) {
-    //   return 1001;
-    // });
-    const Category = function () { };
-    let category = new Category();
-    category.find = jasmine.createSpy("find() spy").and.callFake(function () {
-      console.log('HERE');
-      return 'BBB';
-    });
-
-    const result = CategoryObj.getAll(callback);
-    console.log('$$$$$$', result);
-    // expect(callback).toHaveBeenCalledWith(jasmine.objectContaining({
-    //   bar: "baz"
-    // }));
+    CategoryObj.getAll(category, callback);
 
     expect(category.find).toHaveBeenCalled();
-    // const res = category.find();
-    // expect(true).toBe(true);
-  })
+    expect(category.find).toHaveBeenCalledWith('all', callback);
+  });
+
+  it('getById()', () => {
+    spyOn(category, 'find');
+    const categId = 1;
+    const callback = function () { };
+
+    CategoryObj.getById(category, categId, callback);
+
+    expect(category.find).toHaveBeenCalled();
+    expect(category.find).toHaveBeenCalledWith('all', Object({ where: 'id=1' }), callback);
+  });
+
+  it('add()', () => {
+    spyOn(category, 'save');
+    const callback = function () { };
+
+    CategoryObj.add(category, callback);
+
+    expect(category.save).toHaveBeenCalled();
+    expect(category.save).toHaveBeenCalledWith(callback);
+  });
+
+  it('delete()', () => {
+    spyOn(category, 'set');
+    spyOn(category, 'remove');
+
+    const categId = 1;
+    const callback = function () { };
+
+    CategoryObj.delete(category, categId, callback);
+
+    expect(category.set).toHaveBeenCalled();
+    expect(category.set).toHaveBeenCalledWith('id', 1);
+    expect(category.remove).toHaveBeenCalled();
+    expect(category.remove).toHaveBeenCalledWith(callback);
+  });
 });

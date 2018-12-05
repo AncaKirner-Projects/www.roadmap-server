@@ -1,45 +1,53 @@
 const express = require('express');
+const CategoryModel = require('../models/DBModel');
+
+const table = 'category';
+const category = CategoryModel(table);
 const Category = require('../models/category');
 
 const router = express.Router();
 
 router.get('/', (req, res) => {
-  Category.getAll((err, result, fiels) => {
+  Category.getAll(category, (err, result, fiels) => {
     if (err) {
       res.status(404).send(err);
+    } else {
+      res.send(result);
     }
-    res.send(JSON.stringify(result));
   });
 });
 
 router.get('/:id', (req, res) => {
-  Category.getById(req.params.id, (err, result, fiels) => {
+  Category.getById(category, req.params.id, (err, result, fiels) => {
     if (err) {
       res.status(404).send(err);
+    } else {
+      res.send(result);
     }
-    res.send('Category: ' + JSON.stringify(result));
   });
 });
 
 router.post('/', (req, res) => {
-  Category.add(req.body, (err, result, conn) => {
+  const category = CategoryModel(table, req.body);
+  const Category = require('../models/category');
+
+  Category.add(category, (err, result, conn) => {
     if (err) {
-      console.log(err);
       res.status(404).send(err);
     }
     if (result && result.affectedRows === 1) {
-      res.status(201).send("Added id: " + result.insertId);
+      res.status(201).send({ id: result.insertId });
     }
   });
 });
 
 router.delete('/:id', (req, res) => {
-  Category.delete(req.params.id, (err, result, conn) => {
+  Category.delete(category, req.params.id, (err, result, conn) => {
     if (err) {
       res.status(404).send(err);
     }
     if (result && result.affectedRows === 1) {
-      res.status(200).send("Deleted");
+      res.status(204).send();
     }
   })
 });

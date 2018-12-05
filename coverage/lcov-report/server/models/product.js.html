@@ -20,9 +20,9 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">31.25% </span>
+        <span class="strong">100% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>5/16</span>
+        <span class='fraction'>11/11</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
@@ -35,13 +35,13 @@
         <span class='fraction'>0/0</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">31.25% </span>
+        <span class="strong">100% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>5/16</span>
+        <span class='fraction'>11/11</span>
       </div>
     </div>
   </div>
-  <div class='status-line low'></div>
+  <div class='status-line high'></div>
 <pre><table class="coverage">
 <tr><td class="line-count quiet">1
 2
@@ -75,99 +75,69 @@
 30
 31
 32
-33
-34
-35
-36
-37
-38
-39
-40
-41
-42
-43</td><td class="line-coverage quiet"><span class="cline-any cline-yes">1×</span>
+33</td><td class="line-coverage quiet"><span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1×</span></td><td class="text"><pre class="prettyprint lang-js">const MyAppModel = require('../db_connection/mysqlConnection');
-&nbsp;
-let Product = MyAppModel.extend({
-  tableName: "product",
-});
-&nbsp;
-let product = new Product();
-&nbsp;
-const ProductObj = {
-  getAll: (callback) =&gt; {
-<span class="cstat-no" title="statement not covered" >    product.find('all', callback);</span>
+<span class="cline-any cline-yes">1×</span></td><td class="text"><pre class="prettyprint lang-js">const ProductObj = {
+  getAll: (product, callback) =&gt; {
+    product.find('all', callback);
   },
-  getAllWithCategory: (callback) =&gt; {
-<span class="cstat-no" title="statement not covered" >    console.log('IN MODEL%%%%%');</span>
-<span class="cstat-no" title="statement not covered" >    const query = "\</span>
+  getAllWithCategory: (product, callback) =&gt; {
+    const query = "\
     SELECT p.*, pc.category_id \
     FROM product p \
     LEFT JOIN product_category pc ON p.id = pc.product_id \
     ORDER BY p.id";
-<span class="cstat-no" title="statement not covered" >    product.query(query, callback);</span>
+    product.query(query, callback);
   },
-  getAllFromCategory: (category_ids, callback) =&gt; {
-<span class="cstat-no" title="statement not covered" >    const query = "\</span>
+  getAllFromCategory: (product, category_ids, callback) =&gt; {
+    const query = "\
     SELECT p.*, pc.category_id \
     FROM product p \
     INNER JOIN product_category pc ON p.id = pc.product_id \
     WHERE pc.category_id IN(" + category_ids + ")";
-<span class="cstat-no" title="statement not covered" >    product.query(query, callback);</span>
+    product.query(query, callback);
   },
-  getById: (id, callback) =&gt; {
-<span class="cstat-no" title="statement not covered" >    product.find('all', { where: `id=${id}` }, callback);</span>
+  getById: (product, id, callback) =&gt; {
+    product.find('all', { where: `id=${id}` }, callback);
   },
-  add: (prod, callback) =&gt; {
-<span class="cstat-no" title="statement not covered" >    product = new Product(prod);</span>
-<span class="cstat-no" title="statement not covered" >    product.save(callback);</span>
+  add: (product, callback) =&gt; {
+    product.save(callback);
   },
-  delete: (id, callback) =&gt; {
-<span class="cstat-no" title="statement not covered" >    product.set('id', id);</span>
-<span class="cstat-no" title="statement not covered" >    product.remove(callback);</span>
+  delete: (product, id, callback) =&gt; {
+    product.set('id', id);
+    product.remove(callback);
   }
-}
+};
 &nbsp;
 module.exports = ProductObj;</pre></td></tr>
 </table></pre>
@@ -175,7 +145,7 @@ module.exports = ProductObj;</pre></td></tr>
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Tue Nov 27 2018 15:04:02 GMT+0200 (GTB Standard Time)
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Wed Dec 05 2018 17:33:35 GMT+0200 (GTB Standard Time)
 </div>
 </div>
 <script src="../../prettify.js"></script>

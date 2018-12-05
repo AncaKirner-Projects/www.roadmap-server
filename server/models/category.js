@@ -1,26 +1,17 @@
-const MyAppModel = require('../db_connection/mysqlConnection');
-
-let Category = MyAppModel.extend({
-  tableName: "category",
-});
-
-let category = new Category();
-
 const CategoryObj = {
-  getAll: (callback) => {
+  getAll: (category, callback) => {
     category.find('all', callback);
   },
-  getById: (id, callback) => {
+  getById: (category, id, callback) => {
     category.find('all', { where: `id=${id}` }, callback);
   },
-  add: (categ, callback) => {
-    category = new Category(categ);
+  add: (category, callback) => {
     category.save(callback);
   },
-  delete: (id, callback) => {
+  delete: (category, id, callback) => {
     category.set('id', id);
     category.remove(callback);
   }
-}
+};
 
 module.exports = CategoryObj;
