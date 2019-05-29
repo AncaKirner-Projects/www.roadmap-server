@@ -1,7 +1,7 @@
 const express = require('express');
 const Model = require('../models/DBModel');
 
-const table = 'products';
+const table = 'product';
 const table2 = 'product_category';
 const product = Model(table);
 const Product = require('../models/product');
@@ -9,6 +9,16 @@ const Product = require('../models/product');
 const router = express.Router();
 
 router.get('/', (req, res) => {
+  Product.getAllWithCategory(product, (err, result, fiels) => {
+    if (err) {
+      res.status(404).send(err);
+    } else {
+      res.status(200).send(result);
+    }
+  });
+});
+
+router.get('/categories', (req, res) => {
   Product.getAllWithCategory(product, (err, result, fiels) => {
     if (err) {
       res.status(404).send(err);

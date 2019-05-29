@@ -11,11 +11,12 @@ const ProductObj = {
     product.query(query, callback);
   },
   getAllFromCategory: (product, category_ids, callback) => {
-    const query = "\
-    SELECT p.*, pc.category_id \
-    FROM product p \
-    INNER JOIN product_category pc ON p.id = pc.product_id \
-    WHERE pc.category_id IN(" + category_ids + ")";
+    const query = `
+    SELECT p.*, pc.category_id 
+    FROM product p 
+    INNER JOIN product_category pc ON p.id = pc.product_id 
+    WHERE pc.category_id IN(${category_ids})
+    GROUP BY p.id`;
     product.query(query, callback);
   },
   getById: (product, id, callback) => {
